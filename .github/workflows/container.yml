@@ -58,4 +58,4 @@ jobs:
       - name: Set Automated CloudFront Invalidation
         run: |
           echo "Invalidating CloudFront cache for container/latest/index.html"
-          aws cloudfront create-invalidation --distribution-id E3HNTPXRC9DYEW --paths "/container/latest/index.html"
+          aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/container/latest/index.html"
