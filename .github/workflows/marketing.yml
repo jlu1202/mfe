@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - 'packages/marketing/**'
+      - '.github/workflows/marketing.yml'
   workflow_dispatch:
     inputs:
       environment:
