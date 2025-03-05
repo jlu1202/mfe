@@ -56,5 +56,5 @@ jobs:
           COMMENT: ${{ github.event.inputs.comment || 'none' }}
       - name: Set Automated CloudFront Invalidation
         run:
-          echo "Invalidating CloudFront cache for marketing/latest/index.html"
+          echo "Invalidating CloudFront cache for marketing/latest/remoteEntry.js"
           aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CLOUDFRONT_DISTRIBUTION_ID }} --paths "/marketing/latest/remoteEntry.js"
