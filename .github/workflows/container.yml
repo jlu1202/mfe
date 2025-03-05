@@ -56,6 +56,6 @@ jobs:
           ENVIRONMENT: ${{ github.event.inputs.environment || 'production' }}
           COMMENT: ${{ github.event.inputs.comment || 'none' }}
       - name: Set Automated CloudFront Invalidation
-        run:
+        run: |
           echo "Invalidating CloudFront cache for container/latest/index.html"
-          aws cloudfront create-invalidation --distribution-id "E3HNTPXRC9DYEW" --paths "/container/latest/index.html"
+          aws cloudfront create-invalidation --distribution-id E3HNTPXRC9DYEW --paths "/container/latest/index.html"
