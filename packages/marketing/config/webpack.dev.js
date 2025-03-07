@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
 const commonConfig = require('./webpack.common');
 const packageJson = require('../package.json');
@@ -8,10 +8,13 @@ const port = process.env.MARKETING_PORT || 8081;
 
 const devConfig = {
     mode: 'development',
+    output: {
+        publicPath: `http://localhost:${port}/`,
+    },
     devServer: {
-        port: 8081,
+        port: `${port}`,
         historyApiFallback: {
-            index: '/index.html',
+      historyApiFallback: true,
         },
     },
     plugins: [
@@ -24,7 +27,7 @@ const devConfig = {
             shared: packageJson.dependencies,
             // shared: ['react', 'react-dom'],
         }),
-        new HTMLWebpackPlugin({
+    	new HtmlWebpackPlugin({
             template: './public/index.html',
         }),
     ],
